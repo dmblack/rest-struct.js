@@ -1,0 +1,43 @@
+{
+  "name": "rest-struct.js",
+  "version": "0.0.1",
+  "description": "This is a web RESTful API leveraging struct.js.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel  ./src --experimental --source-maps-inline --exclude **/*.test.js -d ./build/Release",
+    "test": "cross-env NODE_ENV=test jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmblack/rest-struct.js.git"
+  },
+  "keywords": [
+    "rest",
+    "restful",
+    "api",
+    "structure",
+    "struct",
+    "struct.js"
+  ],
+  "author": "Dustyn Blackmore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dmblack/rest-struct.js/issues"
+  },
+  "homepage": "https://github.com/dmblack/rest-struct.js#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.0",
+    "babel-preset-env": "^1.7.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.1.0",
+    "express": "^4.16.3",
+    "jest": "^23.4.1",
+    "jsonschema": "^1.2.4",
+    "struct.js": "https://github.com/dmblack/struct.js.git"
+  },
+  "devDependencies": {
+    "supertest": "^3.1.0"
+  }
+}
