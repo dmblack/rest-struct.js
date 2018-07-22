@@ -51,13 +51,39 @@ const basStruct = struct(Object.assign({}, dependencies, { 'schema': basicSchema
 
 // middleware that is specific to this router
 router.use(function timeLog (req, res, next) {
-  console.log('Time: ', Date.now());
+  // console.log('Time: ', Date.now());
   next();
 });
 // define the home page route
 router.get('/:id', function (req, res) {
+  const identifier = parseInt(req.params.id);
+
+  if (isNaN(identifier)) {
+    res.status(400).send();
+  }
+
   const basicStruct = basStruct({});
   basicStruct.scaffold();
+  res.json(basicStruct.get());
+});
+
+router.put('/', function (req, res) {
+  if (!req.body) {
+    res.status(400).send();
+  }
+
+  const body = req.body;
+
+  console.log('Our PUT object: %s', JSON.stringify(body));
+  const key = Object.keys(req.body)[0];
+  const value = req.body[key];
+
+  console.log({[key]: value});
+
+  const basicStruct = basStruct(value);
+  console.log('Our PRE Scaffold Struct: %s', JSON.stringify(basicStruct.get()));
+  basicStruct.scaffold();
+  console.log('Our PUT Struct: %s', JSON.stringify(basicStruct.get()));
   res.json(basicStruct.get());
 });
 
